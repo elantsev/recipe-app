@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Recipies.css";
-import s from "./Recipies.module.css";
 
 const Recipies = ({ recipes }) => {
   return (
@@ -10,7 +10,16 @@ const Recipies = ({ recipes }) => {
           <img src={image_url} alt={title} />
           <h5>{title}</h5>
           <p> {`Publisher: ${publisher}`}</p>
-          <button className="recipe_buttons">View Recipe</button>
+          <button className="recipe_buttons">
+            <Link
+              to={{
+                pathname: `/recipe/${recipe_id}`,
+                state: { recipe: title }
+              }}
+            >
+              View Recipe
+            </Link>
+          </button>
         </div>
       ))}
     </div>
