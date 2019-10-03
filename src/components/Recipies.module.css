@@ -1,0 +1,11 @@
+.flex {
+  display: flex;
+  color: red;
+  flex-wrap: wrap;
+}
+
+.item {
+  box-sizing: border-box;
+  width: 25%;
+  padding: 10px;
+}
