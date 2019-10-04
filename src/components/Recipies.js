@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Recipies.css";
 
-const Recipies = ({ recipes }) => {
+function Recipies({ recipes }) {
   return (
     <div className="flex">
       {recipes.map(({ title, recipe_id, image_url, publisher }) => (
@@ -24,6 +24,6 @@ const Recipies = ({ recipes }) => {
       ))}
     </div>
   );
-};
+}
 
 export default Recipies;
