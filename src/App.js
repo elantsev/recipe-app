@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Form from "./components/Form";
+import Form from "./components/Form.js";
 import Recipies from "./components/Recipies";
 
 export const API_KEY = "64ce5ed9e55744a0950f04bd2e83cafa";
@@ -22,9 +22,8 @@ class App extends Component {
 
   componentDidMount() {
     let recipes = JSON.parse(localStorage.getItem("recipes"));
-    console.log(recipes);
     if (recipes) {
-      this.setState({ recipes: [...recipes] });
+      this.setState({ recipes });
     }
   }
 

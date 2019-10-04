@@ -8,14 +8,20 @@ class Recipe extends React.Component {
     activeRecipe: []
   };
   componentDidMount = async () => {
-    const title = this.props.location.state.recipe;
-    const req = await fetch(
-      `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${title}`
-    );
-
-    const res = await req.json();
-    this.setState({ activeRecipe: res.recipes[0] });
-    console.log(this.state.activeRecipe);
+    const recipes = JSON.parse(localStorage.getItem("recipes"));
+    if (recipes) {
+      const recipe = recipes.filter(
+        ({ recipe_id }) => recipe_id === this.props.match.params.id
+      );
+      this.setState({ activeRecipe: recipe[0] });
+    } else {
+      const title = this.props.location.state.recipe;
+      const req = await fetch(
+        `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${title}`
+      );
+      const res = await req.json();
+      this.setState({ activeRecipe: res.recipes[0] });
+    }
   };
   render() {
     const recipe = this.state.activeRecipe;
